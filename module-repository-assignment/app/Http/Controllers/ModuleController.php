@@ -56,7 +56,11 @@ class ModuleController extends Controller
 
     public function edit(Module $module)
     {
-        return view('modules.edit', compact('module'));
+        if ($this->checkUserRole(Auth::user())) {
+            return view('modules.edit', compact('module'));
+        } else {
+            return view('errors.not-authorized');
+        }
     }
 
     public function update(Request $request, Module $module)
@@ -75,16 +79,29 @@ class ModuleController extends Controller
         $module->delete();
         return redirect()->route('modules.index')->with('success', 'Module deleted successfully.');
     }
+    
     public function __construct()
     {
         $this->middleware('auth');
         $this->middleware(function ($request, $next) {
             $user = Auth::user();
-            if ($user->role === User::ROLE_STUDENT) {
-                return redirect('/')->with('error', 'You do not have permission to access this page');
+            if ($user->role === User::ROLE_LECTURER) {
+                return $next($request);
+            }
+
+            else if ($user->role === User::ROLE_STUDENT) {
+                return redirect('/modules')->with('error', 'You do not have permission to access this page');
             }
 
             return $next($request);
         })->only(['create', 'store', 'edit', 'update', 'destroy']);
+    }
+
+    
+    
+    
+    private function checkUserRole($user)
+    {
+        return $user->role === User::ROLE_LECTURER;
     }
 }

@@ -68,6 +68,26 @@
             @yield('content')
         </div>
 
+        @if(session('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('error') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
+
+        <script>
+            window.addEventListener('DOMContentLoaded', function () {
+                var alertElements = document.querySelectorAll('.alert');
+                alertElements.forEach(function (element) {
+                    element.addEventListener('click', function () {
+                        element.style.display = 'none';
+                    });
+                });
+            });
+        </script>
+
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
         <script src="{{ mix('js/app.js') }}"></script>

@@ -13,32 +13,63 @@
     <!-- Bootstrap 5 CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0-beta1/css/bootstrap.min.css" integrity="sha384-pzjw8f+ua7Kw1TIq0v8FqFjcJ6pajs/rfdfs3SO+kD4Ck5BdPtF+to8xMp9MvcY" crossorigin="anonymous">
 
-    <!-- Styles -->
+    <!-- Custom Styles -->
     <style>
         body {
+            background: #e3e3e3;
             font-family: 'figtree', sans-serif;
-            background-color: #f8f9fa;
+            padding: 0;
         }
         .container {
-            max-width: 960px;
-            margin-top: 2rem;
+            background: #e0e0e0;
+            box-shadow: 7px 7px 14px #b8b8b8, -7px -7px 14px #ffffff;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem;
         }
+
+        .new-class {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: center;
+        }
+                
         h1 {
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
             text-align: center;
+            color: #3e3e3e;
+            text-shadow: -1px -1px 1px #ffffff, 1px 1px 1px #d9d9d9;
         }
         .alert {
             margin-top: 1rem;
         }
         .welcome-section {
+            background: #e3e3e3;
             text-align: center;
             padding: 2rem 0;
-            background-color: #ffffff;
             border-radius: 5px;
         }
         .btn {
+            text-decoration: none;
+            width: 200px;
+            height: 30px;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            border-radius: 10px;
+            background: #e3e3e3;
+            box-shadow: 7px 7px 14px #b8b8b8, -7px -7px 14px #ffffff;
             margin: 0 1rem;
+            padding: 10px 20px 10px 20px;
+            margin-bottom: 25px;
+        }
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+            }
         }
     </style>
 </head>
@@ -53,13 +84,12 @@
                     {{ session('status') }}
                 </div>
             @endif
-
-            <!-- Login and Register buttons -->
-            <div class="d-flex justify-content-center">
-                <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
-                <a href="{{ route('register') }}" class="btn btn-secondary">Register</a>
-            </div>
         </div>
+        <!-- Login and Register buttons -->
+        <div class="new-class d-flex justify-content-center">
+                <a href="{{ route('login') }}" class="btn btn-primary btn-lg">Login</a>
+                <a href="{{ route('register') }}" class="btn btn-secondary btn-lg">Register</a>
+            </div>
     </div>
 
     <!-- Bootstrap 5 JavaScript and Popper.js -->
