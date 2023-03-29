@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # Set project name and database credentials
-PROJECT_NAME="module-repository-assignment"
+PROJECT_NAME="Module_Repository_Assignment"
 DB_CONNECTION="mysql"
 DB_HOST="127.0.0.1"
 DB_PORT="3306"
 DB_DATABASE="module_repository"
-DB_USERNAME="adminarbaz"
+DB_USERNAME="arbaz"
 DB_PASSWORD="arbaz"
 
 # Create a new Laravel project
